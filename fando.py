@@ -78,6 +78,8 @@ race_channel=""
 request_to_race=False
 goal_set=False
 
+next=False
+
 irc = IRC()
 irc.connect(server, channel, nickname)
 
@@ -92,7 +94,6 @@ while 1:
 
     if race_channel=="":
         if "PRIVMSG" in text and channel in text and "Race initiated for The Legend of Zelda: A Link to the Past Hacks" in text:
-            next=False
             for i in text.split():
                 print(i)
                 if next:
