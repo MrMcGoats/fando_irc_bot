@@ -8,10 +8,11 @@ def calc_goal(day=datetime.datetime.now(est).day,month=datetime.datetime.now(est
     #fix any fuckery from subtracting the day by 1
     if day<1:
         month-=1
-        year-=1
         if month<1:
             month=12
-        if month in [4,6,9,11]:
+            year-=1
+            day=31
+        elif month in [4,6,9,11]:
             day=30
         elif month==2:
             if year%4==0: #leap year
@@ -30,12 +31,12 @@ def calc_goal(day=datetime.datetime.now(est).day,month=datetime.datetime.now(est
 
         #NOTE: this method is super shitty and should be replaced eventually, although I doubt it will be
         if today==0 or today==4: #It's not wednesday or sunday, so skip those days
-            return calc_goal(day=day-2)
+            return calc_goal(day-2,month,year)
 
-        if year==2018 and month==11 and day==3:
+        if day==3 and month==11 and year==2018:
             return 1 #Standard
 
-        return (calc_goal(day=day-1)+1)%2
+        return (calc_goal(day-1,month,year)+1)%2
     
 if __name__=="__main__":
     print("This is not an executable")
