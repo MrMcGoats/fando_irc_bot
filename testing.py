@@ -1,6 +1,8 @@
 class print_class:
     def send(self,msg):
         print(self,msg)
+    def sendall(self,msg):
+        self.send(msg)
     def recv(self,i):
         return "PRIVMSG #speedrunslive Race initiated for The Legend of Zelda: A Link to the Past Hacks Join TestIfThisWorksFFS"
     def connect(self,j):

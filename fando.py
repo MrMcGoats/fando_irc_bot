@@ -7,8 +7,8 @@ from testing import *
 
 
 channel = "#speedrunslive"
-server = "irc.freenode.net"
-nickname = "testbot_0000"
+server = "irc.speedrunslive.com"
+nickname = "FandoNightlyBot"
 
 race_channel=""
 request_to_race=False
@@ -65,13 +65,13 @@ try:
                 else:
                     #Something went wrong. Shit.
                     del irc
-                    print("Invalid goal. Something bad happened")
+                    print("Invalid goal. Something bad happened. Exiting.")
                     exit(1)
 
                 irc.send(race_channel,".setgoal "+goal_str)
 
             #Ask the other bot to generate a seed at the designated time
-            if TEST_MODE_NO_IRC or (((goal==-1 and datetime.datetime.now(est).minute!=45) or datetime.datetime.now(est).minute!=50) and datetime.datetime.now(est).hour!=21) and not seed_gen:
+            if TEST_MODE_NO_IRC or (((goal==-1 and datetime.datetime.now(est).minute==45) or datetime.datetime.now(est).minute==50) and datetime.datetime.now(est).hour==21) and not seed_gen:
                 race_cmd=""
                 if goal==0:
                    race_cmd=".standard"
